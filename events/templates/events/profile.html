@@ -1,0 +1,7 @@
+<form action="{% url 'events:create_event' %}" method="post">
+{% csrf_token %}
+    <input type="text" name="Event" value="{{ event_name }}"/>
+    <input type="text" name="Date" value="{{ date }}"/>
+    <input type="text" name="Time" value="{{ time }}"/>
+<input type="submit" value="Vote" />
+</form>
