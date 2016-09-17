@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework import routers
 from events import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 router = routers.DefaultRouter()
 #makes sure that the API endpoints work
@@ -29,5 +30,7 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^events/', include('events.urls')),
     url(r'^events/(?P<pk>[0-9]+)$', views.event),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
