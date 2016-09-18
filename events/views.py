@@ -17,8 +17,8 @@ def signup(request):
 def create_event(request):
 	if request.method == 'POST':
 		form = forms.Form(request.POST)
-		print form.cleaned_data['event_name']
-		# print form.cleaned_data['Date']
+		# print form.cleaned_data['event_name']
+		# # print form.cleaned_data['Date']
 		# print form.cleaned_data['Time']
 	return HttpResponseRedirect(reverse('events:profile')) # Redirect after POST
 
