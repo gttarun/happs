@@ -4,4 +4,4 @@ from rest_framework import serializers
 class EventSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserEvents
-        fields = ('event_name', 'time', 'active')
+        fields = ('event_name', 'time', 'longitude', 'latitude')
