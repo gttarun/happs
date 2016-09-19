@@ -44,10 +44,11 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 ]
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-#     'PAGE_SIZE': 10
-# }
+# only admin user can create events
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGE_SIZE': 10
+}
 
 MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
@@ -89,6 +90,8 @@ DATABASES = {
 		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 	}
 }
+
+DATABASES['default'] =  dj_database_url.config()
 
 
 # Password validation
@@ -133,5 +136,3 @@ STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, "static"),
 	'/var/www/static/',
 ]
-
-DATABASES['default'] =  dj_database_url.config()
