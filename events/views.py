@@ -1,30 +1,29 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
-from rest_framework import viewsets
-from rest_framework import permissions
+from rest_framework import viewsets, status, permissions
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from .models import UserEvents
+from django.http import HttpResponse
 from .serializers import EventSerializer
-from django.urls import reverse
-from django import forms
 
-# Create your views here.
 def index(request):
-	return render(request, "events/index.html", context={})
+	return HttpResponse("Hello world!")
 
-def signup(request):
-	return render(request, "events/profile.html", context={})
-
-def create_event(request):
-	if request.method == 'POST':
-		form = forms.Form(request.POST)
-		# print form.cleaned_data['event_name']
-		# # print form.cleaned_data['Date']
-		# print form.cleaned_data['Time']
-	return HttpResponseRedirect(reverse('events:profile')) # Redirect after POST
-
+@api_view(['GET', 'POST'])
 def event(request, pk):
-	queryset = UserEvents.objects.get(pk)
-	serializer_class = EventSerializer
+
+	# GET 
+	if request.method == 'GET':
+		queryset = UserEvents.objects.get(pk)
+		serializer = EventSerializer
+		return Response(serializer.data)
+
+	# POST
+	elif request.method == 'POST':
+		serializer = EventSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Create your views here.
 class EventsViewSet(viewsets.ModelViewSet):

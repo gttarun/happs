@@ -134,4 +134,13 @@ STATICFILES_DIRS = [
 	'/var/www/static/',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+   'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+}
+
 DATABASES['default'] =  dj_database_url.config()
