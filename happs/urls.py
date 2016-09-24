@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^events/', include('events.urls')),
     url(r'^events/(?P<pk>[0-9]+)$', views.event),
+    url(r'^events/post$', views.post),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
