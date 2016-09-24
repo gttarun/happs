@@ -8,17 +8,19 @@ from .serializers import EventSerializer
 def index(request):
 	return HttpResponse("Hello world!")
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'PUT'])
 def event(request, pk):
+	try:
+		queryset = Snippet.objects.get(pk=pk)
+	except queryset.DoesNotExist:
+		return Response(status=status.HTTP_404_NOT_FOUND)
 
-	# GET 
 	if request.method == 'GET':
 		queryset = UserEvents.objects.get(pk)
 		serializer = EventSerializer
 		return Response(serializer.data)
 
-	# POST
-	elif request.method == 'POST':
+	elif request.method == 'PUT':
 		serializer = EventSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
