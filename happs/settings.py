@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+	'upload.apps.UploadConfig',
 	'rest_framework',
 	'location_field.apps.DefaultConfig', 
 	'events.apps.EventsConfig',

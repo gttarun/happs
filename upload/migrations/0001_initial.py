@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+import upload.models
 
 
 class Migration(migrations.Migration):
@@ -14,13 +15,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='UserEvents',
+            name='FileUpload',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('event_name', models.CharField(max_length=255)),
-                ('time', models.DateTimeField()),
-                ('longitude', models.CharField(max_length=255)),
-                ('latitude', models.CharField(max_length=255)),
+                ('created', models.DateTimeField(auto_now_add=True)),
+                ('datafile', models.ImageField(blank=True, null=True, upload_to=upload.models.upload_to, verbose_name='image')),
             ],
         ),
     ]
