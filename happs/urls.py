@@ -31,6 +31,7 @@ urlpatterns = [
 	url(r'^', include(router.urls)),
 	url(r'^events/', include('events.urls')),
 	url(r'^events/(?P<pk>[0-9]+)$', eviews.event),
+	url(r'^images/(?P<image_id>[0-9]+)$', uviews.get_image),
 	url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 	url(r'^upload/', include('upload.urls')),
 ]

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 def upload_to(instance, filename):
-	return 'images/{}'.format(filename)
+	return 'static/images/{}'.format(filename)
 
 class FileUpload(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
