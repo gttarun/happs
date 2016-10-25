@@ -6,9 +6,6 @@ from .serializers import FileUploadSerializer
 
 def get_image(request, image_id):
     db_image = FileUpload.objects.get(pk=image_id)
-    print "\n++++++++++++++++++++++++++++++++\n"
-    print db_image.datafile
-    print "\n++++++++++++++++++++++++++++++++\n"
     image = "../" + str(db_image.datafile)
     return render(request, 'upload/show_image.html', {'image': image})
 
