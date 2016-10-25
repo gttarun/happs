@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+	'forms.apps.FormsConfig',
 	'upload.apps.UploadConfig',
 	'rest_framework',
 	'location_field.apps.DefaultConfig', 
@@ -144,4 +145,4 @@ REST_FRAMEWORK = {
     ),
 }
 
-DATABASES['default'] =  dj_database_url.config()
+# DATABASES['default'] =  dj_database_url.config()

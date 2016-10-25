@@ -3,23 +3,19 @@ from django.http import HttpResponse
 from .models import User
 from rest_framework.response import Response
 from .serializers import UserSerializer
-from rest_framework.views import APIView
-from rest_framework import status
-# Create your views here.
+from rest_framework import viewsets, status, permissions
+from rest_framework.decorators import api_view, detail_route, list_route
 
 def index(request):
 	return HttpResponse("<h1>This is the forms homepage</h1>")
 
-#Lists all users or create a new one
-#users/
 
-class UserList(APIView):
-	def get(self, request):
-		users = User.objects.all()
-		serializer = UserSerializer(users, many=True)
-		return Response(serializer.data)
+class UserViewSet(viewsets.ModelViewSet):
+	queryset = User.objects.all()
+	serializer_class = UserSerializer
 
-	def post(self, request):
+	@detail_route(methods=['post'])
+	def addUser(self, request):
 		serializer = UserSerializer(data = request.data)
 		if serializer.is_valid():
 			serializer.save()
