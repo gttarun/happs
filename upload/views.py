@@ -21,7 +21,7 @@ class FileUploadViewSet(ModelViewSet):
 		serializer.save(datafile=self.request.data.get('datafile'))
 
 	def retrieve(self, request, pk):
-		return Response(FileUploadSerializer(FileUpload.objects.get(username=pk)).data)
+		return Response(FileUploadSerializer(FileUpload.objects.filter(username=pk), many=True).data)
 
 
 
