@@ -22,19 +22,22 @@ class FileUploadViewSet(ModelViewSet):
 	def create(self, serializer):
 		serializer.save(datafile=self.request.data.get('datafile'))
 
-	def retrieve(self, request, pk):
-		# return Response(FileUploadSerializer(FileUpload.objects.filter(username=pk), many=True).data)
-		
-		db_image = FileUpload.objects.get(username=pk)
-		# image = str(db_image.datafile)
-		# response = HttpResponse(image, content_type='image/jpeg')
-		# response['Content-Disposition'] = 'attachment; filename=%s' % smart_str("seven.jpg")
-		# response['X-Sendfile'] = smart_str(image)
-		# return response
-
-		im = str(db_image.datafile)
-		image = Image.open(im)
-		response = HttpResponse(content_type='application/force-download')
-		response['Content-Disposition'] = 'attachment; filename=%s' % smart_str("image.jpg")
-		image.save(response, "jpeg")
-		return response
+	def retrieve(self, request, pk, format=""):
+		# if format:
+		# 	im = str(format)
+		# 	image = Image.open(im)
+		# 	response = HttpResponse(content_type='application/force-download')
+		# 	response['Content-Disposition'] = 'attachment; filename=%s' % smart_str("image.jpg")
+		# 	image.save(response, "jpeg")
+		# 	return response
+		# else:
+		# 	images = []
+		# 	db_image = FileUpload.objects.filter(username=pk)
+		# 	for each in db_image:
+		# 		images.append(str(each.datafile))
+		# 	return render(request, 'upload/show_image.html', {'images': images, 'username': pk})
+		images = []
+		db_image = FileUpload.objects.filter(username=pk)
+		for each in db_image:
+			images.append(str(each.datafile))
+		return render(request, 'upload/show_image.html', {'images': images, 'username': pk})

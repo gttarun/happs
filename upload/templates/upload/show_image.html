@@ -1,1 +1,11 @@
-{% load static %} <img src="{{ image }}" alt = "{{ image }}"/>
+{% for image in images %}
+	<a href="/{{ images }}"><img src="../../../{{ image }}" alt="{{ image }}"></a>
+{% endfor %}
+
+<style>
+	img { 
+    	display: inline-block;
+    	max-width: 25%;
+    	height: auto;
+	}
+</style>
