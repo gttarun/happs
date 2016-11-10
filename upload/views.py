@@ -35,6 +35,6 @@ class FileUploadViewSet(ModelViewSet):
 		im = str(db_image.datafile)
 		image = Image.open(im)
 		response = HttpResponse(content_type='application/force-download')
-		response['Content-Disposition'] = 'attachment; filename=%s' % smart_str("tmp_img.jpg")
+		response['Content-Disposition'] = 'attachment; filename=%s' % smart_str("image.jpg")
 		image.save(response, "jpeg")
 		return response
