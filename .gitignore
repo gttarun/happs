@@ -5,3 +5,4 @@ staticfiles
 images
 db.sqlite3
 static
+migrations
