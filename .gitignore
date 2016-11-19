@@ -3,7 +3,8 @@ venv/*
 staticfiles
 .env
 images
+./static/
 db.sqlite3
-static
+static/*
 migrations/*
 .DS_Store
