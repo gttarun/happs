@@ -8,10 +8,10 @@ from .serializers import FileUploadSerializer
 from django.utils.encoding import smart_str
 from PIL import Image
 
-def get_image(request, image_id):
-	db_image = FileUpload.objects.get(pk=image_id)
-	image = "../" + str(db_image.datafile)
-	return render(request, 'upload/show_image.html', {'image': image})
+# def get_image(request, image_id):
+# 	db_image = FileUpload.objects.get(pk=image_id)
+# 	image = "../" + str(db_image.datafile)
+# 	return render(request, 'upload/show_image.html', {'image': image})
 
 class FileUploadViewSet(ModelViewSet):
 	
@@ -20,10 +20,7 @@ class FileUploadViewSet(ModelViewSet):
 	parser_classes = (MultiPartParser, FormParser,)
 
 	def create(self, serializer):
-		try:
-			serializer.save(datafile=self.request.data.get('datafile'))
-		except Exception,e: 
-			print str(e)
+		serializer.save(datafile=self.request.data.get('datafile'))
 
 	# def retrieve(self, request, pk, format=""):
 	# 	images = []
