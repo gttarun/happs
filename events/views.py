@@ -32,7 +32,7 @@ class FileUploadViewSet(ModelViewSet):
 			images.append(str(each.datafile))
 		return render(request, 'events/show_image.html', {'images': images, 'username': pk})
 
-class EventsViewSet(viewsets.ModelViewSet):
+class EventsViewSet(ModelViewSet):
 	queryset = UserEvents.objects.all()
 	serializer_class = EventSerializer
 
