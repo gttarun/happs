@@ -6,10 +6,6 @@ from .serializers import UserSerializer
 from rest_framework import viewsets, status, permissions
 from rest_framework.decorators import api_view, detail_route, list_route
 
-def index(request):
-	return HttpResponse("<h1>This is the forms homepage</h1>")
-
-
 class UserViewSet(viewsets.ModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer

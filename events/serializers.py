@@ -4,10 +4,10 @@ from rest_framework import serializers
 class EventSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserEvents
-        fields = ('id', 'event_name', 'time', 'longitude', 'latitude')
+        fields = ('id', 'event_name', 'created_by', 'time', 'longitude', 'latitude')
 
 class FileUploadSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = FileUpload
-        fields = ('event', 'username', 'created', 'datafile')
+        fields = ('event', 'created_by', 'created', 'datafile')
         read_only_fields = ('created', 'datafile')
