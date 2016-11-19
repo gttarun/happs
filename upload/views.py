@@ -20,7 +20,10 @@ class FileUploadViewSet(ModelViewSet):
 	parser_classes = (MultiPartParser, FormParser,)
 
 	def create(self, serializer):
-		serializer.save(datafile=self.request.data.get('datafile'))
+		try:
+			serializer.save(datafile=self.request.data.get('datafile'))
+		except Exception,e: 
+			print str(e)
 
 	def retrieve(self, request, pk, format=""):
 		# if format:
