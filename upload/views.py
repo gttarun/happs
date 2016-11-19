@@ -25,22 +25,9 @@ class FileUploadViewSet(ModelViewSet):
 		except Exception,e: 
 			print str(e)
 
-	def retrieve(self, request, pk, format=""):
-		# if format:
-		# 	im = str(format)
-		# 	image = Image.open(im)
-		# 	response = HttpResponse(content_type='application/force-download')
-		# 	response['Content-Disposition'] = 'attachment; filename=%s' % smart_str("image.jpg")
-		# 	image.save(response, "jpeg")
-		# 	return response
-		# else:
-		# 	images = []
-		# 	db_image = FileUpload.objects.filter(username=pk)
-		# 	for each in db_image:
-		# 		images.append(str(each.datafile))
-		# 	return render(request, 'upload/show_image.html', {'images': images, 'username': pk})
-		images = []
-		db_image = FileUpload.objects.filter(username=pk)
-		for each in db_image:
-			images.append(str(each.datafile))
-		return render(request, 'upload/show_image.html', {'images': images, 'username': pk})
+	# def retrieve(self, request, pk, format=""):
+	# 	images = []
+	# 	db_image = FileUpload.objects.filter(username=pk)
+	# 	for each in db_image:
+	# 		images.append(str(each.datafile))
+	# 	return render(request, 'upload/show_image.html', {'images': images, 'username': pk})
