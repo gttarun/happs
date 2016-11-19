@@ -19,15 +19,12 @@ class FileUploadViewSet(ModelViewSet):
 	serializer_class = FileUploadSerializer
 	parser_classes = (MultiPartParser, FormParser,)
 
-	def create(self, serializer):
-		try:
-			serializer.save(datafile=self.request.data.get('datafile'))
-		except Exception,e: 
-			print str(e)
+	def perform_create(self, serializer):
+		serializer.save(datafile=self.request.data.get('datafile'))
 
-	# def retrieve(self, request, pk, format=""):
-	# 	images = []
-	# 	db_image = FileUpload.objects.filter(username=pk)
-	# 	for each in db_image:
-	# 		images.append(str(each.datafile))
-	# 	return render(request, 'upload/show_image.html', {'images': images, 'username': pk})
+	def retrieve(self, request, pk, format=""):
+		images = []
+		db_image = FileUpload.objects.filter(username=pk)
+		for each in db_image:
+			images.append(str(each.datafile))
+		return render(request, 'upload/show_image.html', {'images': images, 'username': pk})

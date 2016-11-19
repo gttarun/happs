@@ -4,5 +4,5 @@ from .models import FileUpload
 class FileUploadSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = FileUpload
-        fields = ('created', 'datafile')
+        fields = ('username', 'created', 'datafile')
         read_only_fields = ('created', 'datafile')
