@@ -1,8 +1,9 @@
-venv
+venv/*
 *.pyc
 staticfiles
 .env
 images
 db.sqlite3
 static
-migrations
+migrations/*
+.DS_Store
