@@ -34,10 +34,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
 	'forms.apps.FormsConfig',
-	'upload.apps.UploadConfig',
+	'events.apps.EventsConfig',
 	'rest_framework',
 	'location_field.apps.DefaultConfig', 
-	'events.apps.EventsConfig',
 	'django.contrib.admin',
 	'django.contrib.auth',
 	'django.contrib.contenttypes',

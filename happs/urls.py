@@ -17,13 +17,12 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework import routers
 from events import views as eviews
-from upload import views as uviews
 from forms import views as fviews
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 router = routers.DefaultRouter()
 router.register(r'api/events', eviews.EventsViewSet)
-router.register(r'api/images', uviews.FileUploadViewSet)
+router.register(r'api/images', eviews.FileUploadViewSet)
 router.register(r'api/users', fviews.UserViewSet)
 admin.autodiscover()
 
@@ -31,7 +30,6 @@ admin.autodiscover()
 urlpatterns = [
 	url(r'^admin/', include(admin.site.urls)),
 	url(r'^', include(router.urls)),
-	url(r'^images/(?P<image_id>[0-9]+)$', uviews.get_image),
 	url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
