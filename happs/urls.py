@@ -19,12 +19,17 @@ from rest_framework import routers
 from events import views as eviews
 from upload import views as uviews
 from forms import views as fviews
+# from users import views
+from media import views as pviews
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 router = routers.DefaultRouter()
 router.register(r'api/events', eviews.EventsViewSet)
+router.register(r'api/users', eviews.UserViewSet)
 router.register(r'api/images', uviews.FileUploadViewSet)
 router.register(r'api/users', fviews.UserViewSet)
+router.register(r'api/media', pviews.MediaViewSet)
+
 admin.autodiscover()
 
 

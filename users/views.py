@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import User
+from .models import UserModel
 from rest_framework.response import Response
 from .serializers import UserSerializer
 from rest_framework import viewsets, status, permissions
@@ -11,7 +11,7 @@ def index(request):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-	queryset = User.objects.all()
+	queryset = UserModel.objects.all()
 	serializer_class = UserSerializer
 
 	@detail_route(methods=['post'])

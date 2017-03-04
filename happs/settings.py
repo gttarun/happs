@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-import dj_database_url
+# import dj_database_url
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -31,12 +31,13 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# 'users.apps.UsersConfig',
 
 INSTALLED_APPS = [
+	'media.apps.MediaConfig',
 	'forms.apps.FormsConfig',
 	'upload.apps.UploadConfig',
 	'rest_framework',
-	'location_field.apps.DefaultConfig', 
 	'events.apps.EventsConfig',
 	'django.contrib.admin',
 	'django.contrib.auth',
@@ -145,4 +146,4 @@ REST_FRAMEWORK = {
     ),
 }
 
-DATABASES['default'] =  dj_database_url.config()
+# DATABASES['default'] =  dj_database_url.config()
