@@ -3,7 +3,7 @@ from django.db import models
 
 class UserModel(models.Model):
 	name = models.CharField(max_length=255)
-	username = models.CharField(max_length=255), primary_key=True
+	username = models.CharField(max_length=255, primary_key=True)
 	user_id = models.BigIntegerField()
 	authentication_token = models.CharField(max_length=255)
 
