@@ -7,6 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('forms', '0006_auto_20170217_2016'),
     ]
 
     operations = [
@@ -20,12 +21,8 @@ class Migration(migrations.Migration):
                 ('start_time', models.TimeField()),
                 ('end_time', models.TimeField()),
                 ('anonymity', models.BooleanField()),
-                ('invitees', models.TextField()),
-                ('attendees', models.TextField()),
-                ('host', models.CharField(max_length=255)),
-                ('host_username', models.CharField(max_length=255)),
-                ('host_email', models.EmailField(max_length=254)),
                 ('description', models.TextField()),
+                ('invitees', models.ManyToManyField(default=None, to='forms.User')),
             ],
         ),
     ]

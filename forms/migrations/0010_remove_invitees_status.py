@@ -7,16 +7,12 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('events', '0001_initial'),
+        ('forms', '0009_auto_20170304_1740'),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='userevents',
-            name='host_email',
-        ),
-        migrations.RemoveField(
-            model_name='userevents',
-            name='host_username',
+            model_name='invitees',
+            name='status',
         ),
     ]

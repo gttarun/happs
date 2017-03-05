@@ -1,16 +1,31 @@
 from .models import UserEvents
+from forms.models import User
 from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
 
-class EventSerializer(serializers.HyperlinkedModelSerializer):
+
+class DynamicFieldsModelSerializer(serializers.ModelSerializer):
+    """
+    A ModelSerializer that takes an additional `fields` argument that
+    controls which fields should be displayed.
+    """
+
+    def __init__(self, *args, **kwargs):
+        # Instantiate the superclass normally
+        super(DynamicFieldsModelSerializer, self).__init__(*args, **kwargs)
+
+        fields = self.context['request'].query_params.get('fields')
+        if fields:
+            fields = fields.split(',')
+            # Drop any fields that are not specified in the `fields` argument.
+            allowed = set(fields)
+            existing = set(self.fields.keys())
+            for field_name in existing - allowed:
+                self.fields.pop(field_name)
+
+
+class EventSerializer(serializers.HyperlinkedModelSerializer, DynamicFieldsModelSerializer):
     class Meta:
-
-    	users = serializers.HyperlinkedRelatedField(
-        view_name='UserViewSet',
-        lookup_field='username',
-        many=True,
-        read_only=True
-    )
-
         model = UserEvents
         fields = ('event_name', 
 			'address', 
@@ -19,6 +34,6 @@ class EventSerializer(serializers.HyperlinkedModelSerializer):
 			'end_time', 
 			'anonymity', 
 			'invitees', 
-			'attendees', 
-			'host', 
+			#'attendees', 
+			# 'host', 
 			'description',)
