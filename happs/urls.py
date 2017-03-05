@@ -36,7 +36,8 @@ admin.autodiscover()
 urlpatterns = [
 	url(r'^admin/', include(admin.site.urls)),
 	url(r'^', include(router.urls)),
-	url(r'^images/(?P<image_id>[0-9]+)$', uviews.get_image),
+	url(r'^image/(?P<image_id>[A-Za-z0-9]+)$', eviews.get_event),
+	url(r'^profile/(?P<image_id>[A-Za-z0-9]+)$', eviews.get_user),
 	url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
