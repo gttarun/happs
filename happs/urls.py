@@ -25,7 +25,7 @@ router = routers.DefaultRouter()
 router.register(r'api/events', eviews.EventsViewSet)
 router.register(r'api/images', uviews.FileUploadViewSet)
 router.register(r'api/users', fviews.UserViewSet)
-router.register(r'api/invitees', fviews.InviteeViewSet)
+router.register(r'api/attendees', fviews.AttendeesViewSet)
 #router.register(r'api/events/(?P<pk>[0-9]+)', eviews.UserEventsDetail.as_view())
 admin.autodiscover()
 

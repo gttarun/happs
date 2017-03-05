@@ -7,10 +7,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('forms', '0006_auto_20170217_2016'),
     ]
 
     operations = [
+        migrations.CreateModel(
+            name='Event',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+            ],
+        ),
         migrations.CreateModel(
             name='UserEvents',
             fields=[
@@ -20,9 +25,7 @@ class Migration(migrations.Migration):
                 ('date', models.DateField()),
                 ('start_time', models.TimeField()),
                 ('end_time', models.TimeField()),
-                ('anonymity', models.BooleanField()),
                 ('description', models.TextField()),
-                ('invitees', models.ManyToManyField(default=None, to='forms.User')),
             ],
         ),
     ]

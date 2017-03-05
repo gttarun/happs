@@ -32,8 +32,8 @@ class EventSerializer(serializers.HyperlinkedModelSerializer, DynamicFieldsModel
 			'date', 
 			'start_time', 
 			'end_time', 
-			'anonymity', 
-			'invitees', 
+			#'anonymity', 
+			#'invitees', 
 			#'attendees', 
-			# 'host', 
+			 'host', 
 			'description',)

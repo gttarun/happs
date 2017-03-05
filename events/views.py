@@ -10,10 +10,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 def index(request):
     return HttpResponse("Hello world!")
 
-def event(request, pk):
-    queryset = UserEvents.objects.get(pk)
-    serializer = EventSerializer
-    return Response(serializer.data)
+# def event(request, pk):
+#     queryset = UserEvents.objects.get(pk)
+#     serializer = EventSerializer
+#     return Response(serializer.data)
 
 def search(request):
     queryset_list = User.objects.all() 
@@ -24,8 +24,7 @@ def search(request):
                 Q(date__icontains=query),
                 Q(start_time__icontains=query),
                 Q(end_time__icontains=query),
-                Q(anonymity__icontains=query),
-                Q(invitees__icontains=query),
+                Q(host__icontains=query),
                 Q(description__icontains=query),
                 )
     return queryset_list
@@ -40,10 +39,7 @@ class EventsViewSet(viewsets.ModelViewSet):
             'date', 
             'start_time', 
             'end_time', 
-            'anonymity', 
-            'invitees', 
-            #'attendees', 
-            #'host', 
+            'host', 
             'description',)
 
     @detail_route(methods=['post'])
@@ -55,31 +51,31 @@ class EventsViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class UserEventsDetail(APIView):
-    """
-    Retrieve, update or delete a snippet instance.
-    """
-    def get_object(self, pk):
-        try:
-            return UserEvents.objects.get(pk=pk)
-        except UserEvents.DoesNotExist:
-            raise Http404
+# class UserEventsDetail(APIView):
+#     """
+#     Retrieve, update or delete a snippet instance.
+#     """
+#     def get_object(self, pk):
+#         try:
+#             return UserEvents.objects.get(pk=pk)
+#         except UserEvents.DoesNotExist:
+#             raise Http404
 
-    def get(self, request, pk, format=None):
-        user_event = self.get_object(pk)
-        serializer = EventSerializer(user_event)
-        return Response(serializer.data)
+#     def get(self, request, pk, format=None):
+#         user_event = self.get_object(pk)
+#         serializer = EventSerializer(user_event)
+#         return Response(serializer.data)
 
-    def put(self, request, pk, format=None):
-        user_event = self.get_object(pk)
-        serializer = EventSerializer(user_event, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     def put(self, request, pk, format=None):
+#         user_event = self.get_object(pk)
+#         serializer = EventSerializer(user_event, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
-        user_event = self.get_object(pk)
-        user_event.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#     def delete(self, request, pk, format=None):
+#         user_event = self.get_object(pk)
+#         user_event.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
 

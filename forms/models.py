@@ -1,4 +1,5 @@
 from django.db import models
+from events.models import UserEvents
 # Create your models here.
 
 class User(models.Model):
@@ -8,11 +9,11 @@ class User(models.Model):
 	authentication_token = models.CharField(max_length=255)
 
 	def __str__(self):
-		return self.name
+		return self.username
 
-class invitees(models.Model):
-	username = models.ForeignKey('User', on_delete=models.CASCADE, default=None,)
-	#event = models.ForeignKey('events.UserEvents', on_delete=models.CASCADE, default=None,)
+class attendees(models.Model):
+	username = models.ForeignKey('User', on_delete=models.CASCADE)
+	attendee_event = models.ForeignKey('events.UserEvents', on_delete=models.CASCADE, default=None)
 	response = models.BooleanField(default=True)
 
 	def __str__(self):

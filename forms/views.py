@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import User, invitees
+from .models import User, attendees
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, InviteeSerializer
+from .serializers import UserSerializer, AttendeesSerializer
 from rest_framework import viewsets, status, permissions
 from rest_framework.decorators import api_view, detail_route, list_route
 from rest_framework import generics
@@ -33,13 +33,14 @@ def search(request):
                 Q(username__icontains=query))
     return queryset_list
 
-class InviteeViewSet(viewsets.ModelViewSet):
-    queryset = invitees.objects.all()
-    serializer_class = InviteeSerializer
-    
+class AttendeesViewSet(viewsets.ModelViewSet):
+    queryset = attendees.objects.all()
+    serializer_class = AttendeesSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('username','attendee_event', 'response',)
     @detail_route(methods=['post'])
     def updateUser(self, request):
-        serializer = InviteeSerializer(data = request.data)
+        serializer = AttendeesSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
