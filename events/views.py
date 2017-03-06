@@ -10,7 +10,7 @@ from rest_framework.generics import (
         RetrieveAPIView)
 from django.http import HttpResponse
 from .serializers import EventSerializer
-from rest_framework.filters import DjangoFilterBackend
+
 
 
 # Create your views here.
