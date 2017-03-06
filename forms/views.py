@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import User, attendees
+from .models import user, attendees
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer, AttendeesSerializer
