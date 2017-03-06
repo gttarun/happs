@@ -3,7 +3,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import FileUpload
+from .models import fileupload
 from .serializers import FileUploadSerializer
 from django.utils.encoding import smart_str
 from PIL import Image
