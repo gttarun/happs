@@ -36,7 +36,7 @@ INSTALLED_APPS = [
 	'forms.apps.FormsConfig',
 	'upload.apps.UploadConfig',
 	'rest_framework',
-	'location_field.apps.DefaultConfig', 
+	#'location_field.apps.DefaultConfig', 
 	'events.apps.EventsConfig',
 	'django.contrib.admin',
 	'django.contrib.auth',
