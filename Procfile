@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath happs happs.wsgi
+web: gunicorn happs.wsgi
