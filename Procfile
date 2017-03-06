@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath happs happs.wsgi --log-file-
+web: gunicorn --pythonpath happs happs.wsgi
