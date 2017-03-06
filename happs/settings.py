@@ -34,7 +34,6 @@ INSTALLED_APPS = [
 	'media.apps.MediaConfig',
 	'forms.apps.FormsConfig',
 	'upload.apps.UploadConfig',
-	'rest_framework',
 	'django_filters',
 	'events.apps.EventsConfig',
 	'django.contrib.admin',

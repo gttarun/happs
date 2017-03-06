@@ -7,7 +7,7 @@ from .models import FileUpload
 from .serializers import FileUploadSerializer
 from django.utils.encoding import smart_str
 from PIL import Image
-from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import DjangoFilterBackend
 
 def get_image(request, image_id):
     db_image = FileUpload.objects.get(pk=image_id)
