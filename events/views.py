@@ -10,10 +10,8 @@ from rest_framework.generics import (
         RetrieveAPIView)
 from django.http import HttpResponse
 from .serializers import EventSerializer
-#from django_filters.rest_framework import DjangoFilterBackend
-REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
-}
+from rest_framework.filters import DjangoFilterBackend
+
 
 # Create your views here.
 class EventsViewSet(viewsets.ModelViewSet):
