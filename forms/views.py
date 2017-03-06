@@ -18,7 +18,7 @@ from rest_framework.generics import (
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    queryset = user.objects.all()
     serializer_class = UserSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('name','username', 'user_id', 'authentication_token', 'friends')
@@ -31,12 +31,12 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserUpdateAPIView(UpdateAPIView):
-    queryset = User.objects.all()
+    queryset = user.objects.all()
     serializer_class = UserSerializer
     lookup_fields = ('user_id')
 
 def search(request):
-    queryset_list = User.objects.all() 
+    queryset_list = user.objects.all() 
     query = self.request.GET.get("q")
     if query:
         queryset_list = queryset_list.filter(
