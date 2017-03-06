@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 	'upload',
 	'forms',
 	'media',
+	'static',
 ]
 
 # only admin user can create events
