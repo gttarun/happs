@@ -9,6 +9,7 @@ class User(models.Model):
 	username = models.CharField(max_length=255, primary_key=True)
 	user_id = models.BigIntegerField()
 	authentication_token = models.CharField(max_length=255)
+	friends = models.ManyToManyField('User', default=None)
 	datafile = models.ImageField(('image'), blank=True, null=True, upload_to=upload_to)
 
 	def __str__(self):

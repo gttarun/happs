@@ -9,5 +9,5 @@ class AttendeesSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
-		fields = ('name', 'username', 'user_id', 'authentication_token', 'datafile')
+		fields = ('name', 'username', 'user_id', 'authentication_token', 'datafile', 'friends')
 		read_only_fields = ('datafile',)
