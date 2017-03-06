@@ -1,4 +1,4 @@
-from .models import UserEvents
+from .models import userevents
 from forms.models import User
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
