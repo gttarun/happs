@@ -12,7 +12,6 @@ from django.http import HttpResponse
 from .serializers import EventSerializer
 
 
-
 # Create your views here.
 class EventsViewSet(viewsets.ModelViewSet):
     queryset = UserEvents.objects.all()
