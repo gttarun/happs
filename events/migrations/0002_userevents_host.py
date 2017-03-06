@@ -17,9 +17,4 @@ class Migration(migrations.Migration):
             name='host',
             field=models.ForeignKey(related_name='for_host', default=None, to='forms.User'),
         ),
-        migrations.AddField(
-            model_name='event',
-            name='attendee_event',
-            field=models.ForeignKey(to='events.UserEvents'),
-        ),
     ]

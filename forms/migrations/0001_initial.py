@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+import forms.models
 
 
 class Migration(migrations.Migration):
@@ -15,7 +16,6 @@ class Migration(migrations.Migration):
             name='attendees',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('response', models.BooleanField(default=True)),
                 ('attendee_event', models.ForeignKey(default=None, to='events.UserEvents')),
             ],
         ),
@@ -26,6 +26,7 @@ class Migration(migrations.Migration):
                 ('username', models.CharField(max_length=255, serialize=False, primary_key=True)),
                 ('user_id', models.BigIntegerField()),
                 ('authentication_token', models.CharField(max_length=255)),
+                ('datafile', models.ImageField(upload_to=forms.models.upload_to, null=True, verbose_name=b'image', blank=True)),
             ],
         ),
         migrations.AddField(

@@ -37,7 +37,7 @@ class AttendeesViewSet(viewsets.ModelViewSet):
     queryset = attendees.objects.all()
     serializer_class = AttendeesSerializer
     filter_backends = (DjangoFilterBackend,)
-    filter_fields = ('username','attendee_event', 'response',)
+    filter_fields = ('username','attendee_event',)
     @detail_route(methods=['post'])
     def updateUser(self, request):
         serializer = AttendeesSerializer(data = request.data)

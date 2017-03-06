@@ -27,13 +27,16 @@ class DynamicFieldsModelSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.HyperlinkedModelSerializer, DynamicFieldsModelSerializer):
     class Meta:
         model = UserEvents
-        fields = ('event_name', 
-			'address', 
-			'date', 
-			'start_time', 
-			'end_time', 
-			#'anonymity', 
-			#'invitees', 
-			#'attendees', 
-			 'host', 
-			'description',)
+        fields = (
+            'id',
+            'event_name', 
+            'address', 
+            'date', 
+            'start_time', 
+            'end_time', 
+             'host', 
+            'description',
+            'longitude',
+            'latitude',
+            'datafile',)
+        read_only_fields = ('datafile',)

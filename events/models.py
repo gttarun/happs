@@ -1,6 +1,9 @@
 from __future__ import unicode_literals
 from django.db import models
 
+def upload_to(instance, filename):
+    return 'static/images/{}'.format(filename)
+
 # Create your models here.
 class UserEvents(models.Model):
     event_name = models.CharField(max_length=255)
@@ -14,15 +17,12 @@ class UserEvents(models.Model):
          on_delete=models.CASCADE,
          default = None,)
     description = models.TextField()
-    
+    longitude = models.CharField(max_length=255)
+    latitude = models.CharField(max_length=255)
+    datafile = models.ImageField(('image'), blank=True, null=True, upload_to=upload_to)
+
     def __str__(self):
         return self.event_name
 
     def __unicode__(self):
         return self.event_name
-
-class Event(models.Model):
-    attendee_event = models.ForeignKey('UserEvents', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.attendee_event
