@@ -26,7 +26,7 @@ class DynamicFieldsModelSerializer(serializers.ModelSerializer):
 
 class EventSerializer(serializers.HyperlinkedModelSerializer, DynamicFieldsModelSerializer):
     class Meta:
-        model = UserEvents
+        model = userevents
         fields = (
             'id',
             'event_name', 
